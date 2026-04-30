@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "A user of the application",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "createdAt", "updatedAt"]
+    },
+    "project": {
+      "title": "Project",
+      "description": "A saved solar project configuration",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "address": { "type": "string" },
+        "targetLocation": { 
+          "type": "array",
+          "items": { "type": "number" },
+          "description": "Lat, Lon"
+        },
+        "simulationData": {
+          "type": "object",
+          "description": "The result of the simulation including panels, economics, kwp, etc."
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "address", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/user" },
+      "description": "User profiles"
+    },
+    "/projects/{projectId}": {
+      "schema": { "$ref": "#/entities/project" },
+      "description": "Saved solar projects. Owned by the user specified in userId."
+    }
+  }
+}

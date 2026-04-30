@@ -1,0 +1,6 @@
+{
+  "name": "SunPool",
+  "description": "Norsk solcellekalkulator. Tegn polygoner for tak og beregn panelplassering, energiproduksjon via PVGIS, og økonomi basert på historiske strømpriser.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
